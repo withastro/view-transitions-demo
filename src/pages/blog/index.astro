@@ -49,7 +49,7 @@ const posts = (await getCollection('blog')).sort(
 						posts.map((post, i) => (
 							<li>
 								<FormattedDate date={post.data.pubDate} />
-								<img src={post.data.heroImage} alt={post.data.title} />
+								<img src={post.data.heroImage} alt={post.data.title} transition:name={post.slug} />
 								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
 							</li>
 						))
