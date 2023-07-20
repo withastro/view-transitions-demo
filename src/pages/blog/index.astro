@@ -22,6 +22,8 @@ const posts = (await getCollection('blog')).sort(
 			}
 			ul li {
 				display: flex;
+				margin-bottom: 2rem;
+				align-items: center;
 			}
 			ul li :global(time) {
 				flex: 0 0 130px;
@@ -31,6 +33,11 @@ const posts = (await getCollection('blog')).sort(
 			ul li a:visited {
 				color: #8e32dc;
 			}
+
+			img {
+				width: 8rem;
+				margin-right: .5rem;
+			}
 		</style>
 	</head>
 	<body>
@@ -39,9 +46,10 @@ const posts = (await getCollection('blog')).sort(
 			<section>
 				<ul>
 					{
-						posts.map((post) => (
+						posts.map((post, i) => (
 							<li>
 								<FormattedDate date={post.data.pubDate} />
+								<img src={post.data.heroImage} alt={post.data.title} />
 								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
 							</li>
 						))
