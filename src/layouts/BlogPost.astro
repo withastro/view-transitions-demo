@@ -11,7 +11,7 @@ type Props = Blog['data'] & { slug?: Blog['slug'] }
 const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" transition:name="root" transition:animate="slide">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>

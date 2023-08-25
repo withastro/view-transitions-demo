@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" transition:name="root" transition:animate="slide">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
