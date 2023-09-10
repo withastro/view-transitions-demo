@@ -1,18 +1,46 @@
-# Astro Starter Kit: Blog
+# View-Transitions-Demo
 
+## Usage
+
+Clone this repo, `npm i`, then `npm run dev`.  Or try the live demo:
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/view-transitions-demo)
+
+## View Transitions Information:
+
+This repo shows examples of [View Transitions](https://docs.astro.build/en/guides/view-transitions/) in [Astro](https://astro.build/), most dramatically between the blog index & individual blog posts.
+
+The following codes enable VTs; note the `transition:name`:
+
+`src/components/BaseHead.astro`:
+```jsx
+import { ViewTransitions } from 'astro:transitions';
+...
+<ViewTransitions />
 ```
-npm create astro@latest -- --template blog
+
+`src/layouts/BlogPost.astro`:
+```jsx
+<html lang="en" transition:name="root" transition:animate="slide">
+...
+{heroImage && <img width={720} height={360} src={heroImage} alt="" transition:name={slug} />}
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+`src/pages/blog/index.astro`:
+```jsx
+<html lang="en" transition:name="root" transition:animate="slide">
+...
+<img src={post.data.heroImage} alt={post.data.title} transition:name={post.slug} />
+```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+`src/pages/index.astro`:
+```jsx
+<html lang="en" transition:name="root" transition:animate="slide">
+```
 
 ![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
 
-Features:
+Other Features:
 
 - ✅ Minimal styling (make it your own!)
 - ✅ 100/100 Lighthouse performance
@@ -37,6 +65,7 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── package.json
 └── tsconfig.json
 ```
+
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
